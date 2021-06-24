@@ -73,6 +73,10 @@ jobs:
         uses: bruceadams/get-release@v1.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
       - name: build and package
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
