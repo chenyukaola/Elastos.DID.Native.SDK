@@ -73,10 +73,6 @@ jobs:
         uses: bruceadams/get-release@v1.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
       - name: build and package
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -100,7 +96,7 @@ jobs:
           make install
           make dist
           ls -la
-          tar czvf ElastosDID-${{ steps.split.outputs._2 }}-python-${{ matrix.os }}.tar.gz ./python/eladid.cpython-38-darwin.so
+          tar czvf ElastosDID-${{ steps.split.outputs._2 }}-python-${{ matrix.os }}.tar.gz ./python/eladid.cpython-39-darwin.so
       - name: Upload DID release binary
         uses: actions/upload-release-asset@v1.0.2
         env:
